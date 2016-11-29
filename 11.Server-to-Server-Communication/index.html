@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Vis.io back-end API usage</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body style="padding-top: 70px;overflow-x: hidden;">
+
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #3472f7;">
+    <div class="container-fluid">
+      <a style="color: white;" class="navbar-brand">Sample Vis.io back-end API usage</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="affix">
+          <h3>Summary</h4>
+            <h4><a href="#Installation">Installation</a></h4>
+            <h4><a href="#Users">Create, fetch & delete users</a></h4>
+            <h4><a href="#Search">Search SDK user with email</a></h4>
+            <h4><a href="#Login">Programmatically log user in</a></h4>
+            <h4><a href="#ClientSDK">Use Visio client SDK</a></h4>
+          </div>
+        </div>
+        <div class="col-xs-8">
+          <div class="container" style="width: 100%;">
+            <h3 id="Installation" class="content-title">Installation</h3>
+            <h4>Step 1 : Create an app on <a href="https://admin.vis.io">Vis.io Admin interface</a></h4>
+            <div class="container">
+              <div class="col-xs-12" style="padding: 1.5rem;">
+                <img  style="max-width: 60%;" src="/assets/images/sample.png"></img>
+              </div>
+            </div>
+          </br>
+          <h4>Step 2: Add your secret in users.js and create users</h3>
+          </br>
+        </div>
+
+        <div class="container" id="users" style="padding: 2rem; width:100%">
+          <h3 class="content-title" id="Users">Create, fetch & delete users</h3>
+          <div class="col-sm-7">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>Create a user</h3>
+              </div>
+              <div class="panel-body">
+                <div>
+                  <input style="margin-bottom: 1rem;" class="form-control" placeholder="Email" v-model="user.email">
+                  <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="First Name" v-model="user.firstName"></textarea>
+                  <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="Last Name" v-model="user.lastName"></textarea>
+                  <button class="btn btn-primary" v-on:click="addUser">Create user</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <div class="list-group">
+              <div href="#" class="list-group-item" v-for="(user, index) in users">
+                <h4 class="list-group-item-heading">{{ user.email }}</h4>
+                <p class="list-group-item-text" >{{ user.user_account.firstname }} {{ user.user_account.lastname }}</p>
+                <button class="btn btn-xs btn-danger" v-on:click="deleteUser(index)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="search" style="padding: 2rem; width:100%">
+          <h3 class="content-title" id="Search">Search SDK user with email</h3>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="input-group">
+                <input type="mail" v-model="email" class="form-control" placeholder="Search for email">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" v-on:click="findUser">Go!</button>
+                </span>
+              </div>
+
+              <div class="panel panel-default" style="margin-top: 2rem;overflow-x:scroll">
+                <div class="panel-heading">Email: {{user.email}}</div>
+                <div class="panel-body">
+                  <p>firstName: {{user.user_account.firstname}}</p>
+                  <p>lastName: {{user.user_account.lastname}}</p>
+                  <p>JWT : {{signed_token}}</p>
+                  <p style="font-weight:500;">{{errorMessage}}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="login" style="padding: 2rem; width:100%">
+          <h3 class="content-title" id="Login">Programmatically log user in</h3>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="input-group">
+                <input style="margin-bottom: 1rem;" type="email" v-model="email" class="form-control" placeholder="email">
+                <input style="margin-bottom: 1rem;" type="text" v-model="JWT" class="form-control" placeholder="JWT">
+                <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <iframe style="width: 710px;
+              height: 450px;" src="http://localhost:5000/"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="test" style="padding: 2rem; width:100%">
+          <h3 class="content-title" id="Login">test</h3>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="input-group">
+                <input style="margin-bottom: 1rem;" type="email" v-model="email" class="form-control" placeholder="email">
+                <input style="margin-bottom: 1rem;" type="text" v-model="JWT" class="form-control" placeholder="JWT">
+                <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="users" style="padding: 2rem; width:100%">
+          <h3 class="content-title" id="ClientSDK">Use Visio client SDK</h3>
+
+          <div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
+<script src="/components/users.js"></script>
+<script src="/components/search.js"></script>
+<script src="/components/login.js"></script>
+<script src="/components/test.js"></script>
+</html>

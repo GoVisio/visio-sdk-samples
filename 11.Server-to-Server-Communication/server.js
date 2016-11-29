@@ -1,0 +1,43 @@
+var express        = require('express'),
+    bodyParser     = require('body-parser'),
+    methodOverride = require('method-override'),
+    errorHandler   = require('errorhandler'),
+    morgan         = require('morgan'),
+    routes         = require('./backend'),
+    api            = require('./backend/api');
+
+
+var app = module.exports = express();
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use(express.static(__dirname + '/'));
+app.use('/build', express.static('public'));
+
+var env = process.env.NODE_ENV;
+if ('development' == env) {
+  app.use(errorHandler({
+    dumpExceptions: true,
+    showStack: true
+  }));
+}
+
+if ('production' == app.get('env')) {
+  app.use(errorHandler());
+}
+
+app.get('/', routes.index);
+app.get('/api/users', api.users);
+
+app.post('/api/users/search', api.search);
+app.post('/api/users', api.post_users);
+app.post('/api/users/login', api.log_users);
+
+app.delete('/api/users/:user_id', api.delete_user);
+
+app.listen(8080);
+console.log('Magic happens on port 8080...');
