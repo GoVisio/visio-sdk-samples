@@ -134,9 +134,7 @@ exports.search = function(req, res) {
         'authorization': 'JWT '+jwt
 
       },
-      body: {
-        email: req.body.email,
-      },
+      body: Object.assign(req.body),
       json: true // Automatically parses the JSON string in the response
     };
 

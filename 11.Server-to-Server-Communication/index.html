@@ -81,14 +81,15 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="input-group">
-                <input type="mail" v-model="email" class="form-control" placeholder="Search for email">
+                <input type="mail" v-model="input" class="form-control" placeholder="Search for email or phone number">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button" v-on:click="findUser">Go!</button>
                 </span>
               </div>
 
               <div class="panel panel-default" style="margin-top: 2rem;overflow-x:scroll">
-                <div class="panel-heading">Email: {{user.email}}</div>
+                <div v-if="user.email" class="panel-heading">Email: {{user.email}}</div>
+                <div v-else="user.phone" class="panel-heading">Phone: {{user.phone}}</div>
                 <div class="panel-body">
                   <p>firstName: {{user.user_account.firstname}}</p>
                   <p>lastName: {{user.user_account.lastname}}</p>

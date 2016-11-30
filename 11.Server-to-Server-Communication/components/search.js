@@ -4,7 +4,7 @@ new Vue({
   data: () => {
     return {
       errorMessage: '',
-      email: '',
+      input: '',
       user: {
         user_account: {
 
@@ -21,7 +21,7 @@ new Vue({
 
   methods: {
     findUser: function () {
-      this.$http.post('/api/users/search', {email: this.email})
+      this.$http.post('/api/users/search', {input: this.input})
       .then(function (user) {
         if (user.body && user.body.size !== 0) {
           this.user = user.body.user;
