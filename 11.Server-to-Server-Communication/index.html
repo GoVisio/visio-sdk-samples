@@ -84,60 +84,61 @@
                 <div class="panel-body">
                   <p>firstName: {{user.user_account.firstname}}</p>
                   <p>lastName: {{user.user_account.lastname}}</p>
-                  <p>JWT : {{signed_token}}</p>
-                  <p style="font-weight:500;">{{errorMessage}}</p>
+                  <div>
+                    <textarea style="width: 100%;" placeholder="JWT value">{{signed_token}}</textarea >
+                    </div>
+                    <p style="font-weight:500;">{{errorMessage}}</p>
+                  </div>
                 </div>
               </div>
-
             </div>
           </div>
-        </div>
 
-        <div class="container" id="login" style="padding: 2rem; width:100%">
-          <h3 class="content-title" id="Login">Programmatically log user in</h3>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="input-group">
-                <input style="margin-bottom: 1rem;" type="email" v-model="email" class="form-control" placeholder="email">
-                <input style="margin-bottom: 1rem;" type="text" v-model="JWT" class="form-control" placeholder="JWT">
-                <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
+          <div class="container" id="login" style="padding: 2rem; width:100%">
+            <h3 class="content-title" id="Login">Programmatically log user in</h3>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="input-group">
+                  <input style="margin-bottom: 1rem;" type="email" v-model="email" class="form-control" placeholder="email">
+                  <input style="margin-bottom: 1rem;" type="text" v-model="JWT" class="form-control" placeholder="JWT">
+                  <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
+                </div>
               </div>
-            </div>
-            <div class="col-xs-12">
-              <iframe style="width: 710px;
-              height: 450px;" src="http://localhost:5000/"></iframe>
-            </div>
-          </div>
-        </div>
-
-        <div class="container" id="test" style="padding: 2rem; width:100%">
-          <h3 class="content-title" id="Login">test</h3>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="input-group">
-                <input style="margin-bottom: 1rem;" type="email" v-model="email" class="form-control" placeholder="email">
-                <input style="margin-bottom: 1rem;" type="text" v-model="JWT" class="form-control" placeholder="JWT">
-                <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
+              <div class="col-xs-12">
+                <iframe id="visio_local" style="width: 710px;
+                height: 450px;" src="http://localhost:5000/"></iframe>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="container" id="users" style="padding: 2rem; width:100%">
-          <h3 class="content-title" id="ClientSDK">Use Visio client SDK</h3>
+          <div class="container" id="test" style="padding: 2rem; width:100%">
+            <h3 class="content-title" id="Login">test</h3>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="input-group">
+                  <input style="margin-bottom: 1rem;" type="email" v-model="email" class="form-control" placeholder="email">
+                  <input style="margin-bottom: 1rem;" type="text" v-model="JWT" class="form-control" placeholder="JWT">
+                  <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div>
+          <div class="container" id="users" style="padding: 2rem; width:100%">
+            <h3 class="content-title" id="ClientSDK">Use Visio client SDK</h3>
 
+            <div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-<script src="node_modules/vue/dist/vue.min.js"></script>
-<script src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
-<script src="/components/users.js"></script>
-<script src="/components/search.js"></script>
-<script src="/components/login.js"></script>
-<script src="/components/test.js"></script>
-</html>
+  </body>
+  <script src="node_modules/vue/dist/vue.min.js"></script>
+  <script src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
+  <script src="/components/users.js"></script>
+  <script src="/components/search.js"></script>
+  <script src="/components/login.js"></script>
+  <script src="/components/test.js"></script>
+  </html>

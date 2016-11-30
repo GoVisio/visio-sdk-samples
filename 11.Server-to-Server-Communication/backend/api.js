@@ -18,10 +18,10 @@ exports.delete_user = function (req, res) {
 
     rp(options)
     .then(function (visio_users) {
-      res.status(200).send(visio_users);
+      return res.status(200).send(visio_users);
     })
     .catch(function (err) {
-      console.log(err.message);
+      return res.status(500).send(err.message);
     });
 
   }).catch(function(error) {
@@ -49,10 +49,10 @@ exports.post_users = function(req, res) {
 
     rp(options)
     .then(function (visio_users) {
-      res.status(200).send(visio_users);
+      return res.status(200).send(visio_users);
     })
     .catch(function (err) {
-      console.log(err.message);
+      return res.status(500).send(err.message);
     });
 
   }).catch(function(error) {
@@ -74,10 +74,10 @@ exports.user = function (req, res) {
 
     rp(options)
     .then(function (visio_users) {
-      res.status(200).send(visio_users);
+      return res.status(200).send(visio_users);
     })
     .catch(function (err) {
-      console.log(err.message);
+      return res.status(500).send(err.message);
     });
 
   }).catch(function(error) {
@@ -99,10 +99,10 @@ exports.users = function(req, res) {
 
     rp(options)
     .then(function (visio_users) {
-      res.status(200).send(visio_users);
+      return res.status(200).send(visio_users);
     })
     .catch(function (err) {
-      console.log(err.message);
+      return res.status(500).send(err.message);
     });
 
   }).catch(function(error) {
@@ -122,11 +122,11 @@ exports.log_users = function(req, res) {
   };
 
   rp(options)
-  .then(function (visio_users) {
-    res.status(200).send(visio_users);
+  .then(function (visio_user) {
+    return res.status(200).send(visio_user);
   })
   .catch(function (err) {
-    console.log(err.message);
+    return res.status(500).send(err.message);
   });
 };
 
@@ -147,10 +147,10 @@ exports.search = function(req, res) {
 
     rp(options)
     .then(function (visio_user) {
-      res.status(200).send(visio_user);
+      return res.status(200).send(visio_user);
     })
     .catch(function (err) {
-      console.log(err.message);
+      return res.status(500).send(err.message);
     });
 
   }).catch(function(error) {
