@@ -20,6 +20,21 @@ new Vue({
 
     getVisioEvents: function(data) {
       console.log(data);
+    },
+
+    showPrivateCalendar: function() {
+      Visio.ui.privateCalendar({
+        user:{
+          email: "john.doe@test.com",
+          firstname: "John",
+          lastname: "Doe"
+        },
+        readonly: false,
+        meeting:{
+          notes: "This is a test meeting",
+          meeting_name: "Test Meeting"
+        }
+      }, "ClientSDK");
     }
 
   }
