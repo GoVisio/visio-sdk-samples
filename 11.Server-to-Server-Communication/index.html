@@ -63,7 +63,12 @@
           <div class="col-sm-5">
             <div class="list-group">
               <div href="#" class="list-group-item" v-for="(user, index) in users">
-                <h4 class="list-group-item-heading">{{ user.email }}</h4>
+                <div v-if="user.email">
+                  <h4 class="list-group-item-heading">{{ user.email }}</h4>
+                </div>
+                <div v-else>
+                  <h4 class="list-group-item-heading">{{ user.phone }}</h4>
+                </div>
                 <p class="list-group-item-text" >{{ user.user_account.firstname }} {{ user.user_account.lastname }}</p>
                 <button class="btn btn-xs btn-danger" v-on:click="deleteUser(index)">Delete</button>
               </div>
