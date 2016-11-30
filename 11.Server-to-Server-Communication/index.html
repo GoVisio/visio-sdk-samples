@@ -49,9 +49,12 @@
               </div>
               <div class="panel-body">
                 <div>
-                  <input style="margin-bottom: 1rem;" class="form-control" placeholder="Email" v-model="user.email">
-                  <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="First Name" v-model="user.firstName"></textarea>
-                  <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="Last Name" v-model="user.lastName"></textarea>
+                  <input style="margin-bottom: 1rem;" type="email" class="form-control" placeholder="Email" v-model="user.email">
+                  <p>Or</p>
+                  <input style="margin-bottom: 1rem;" type="tel" class="form-control" placeholder="Telephone number" v-model="user.phone">
+                  <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="First Name" v-model="user.firstname"></textarea>
+                  <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="Last Name" v-model="user.lastname"></textarea>
+                  <p style="font-weight:500;">{{errorMessage}}</p>
                   <button class="btn btn-primary" v-on:click="addUser">Create user</button>
                 </div>
               </div>

@@ -3,7 +3,8 @@ new Vue({
 
   data: () => {
     return {
-      user: { firstName: '', lastName: '', email: '' },
+      errorMessage: '',
+      user: { firstname: '', lastname: '', email: '', phone: ''},
       users: []
     }
   },
@@ -22,28 +23,26 @@ new Vue({
         this.users = users.body
       })
       .catch(function (err) {
-        console.log(err);
+        this.errorMessage = err;
       });
     },
 
     addUser: function () {
-      if (this.user.email.trim()) {
-        this.$http.post('/api/users', this.user)
-        .then(function (res) {
-          this.user.user_account = {
-            firstname: this.user.firstName,
-            lastname: this.user.lastName
-          };
-
+      this.errorMessage = '';
+      if (this.user.email.trim() || this.user.phone.trim()) {
+        this.$http.post('/api/users', this.user).then(function (res) {
+          this.user.user_account = Object.assign(this.user);
           this.users.push(this.user);
-        })
-        .catch(function (err) {
-          console.log(err);
+        }).catch(function (err) {
+          this.errorMessage = err.body;
         });
+      }else {
+        this.errorMessage = 'Email or Phone required'
       }
     },
 
     deleteUser: function (index) {
+      this.errorMessage = '';
       const user = this.users[index];
       if (confirm('Confirmer la suppr. ？')) {
         this.$http.delete('api/users/' + user.id_user)
@@ -51,7 +50,7 @@ new Vue({
           this.users.splice(index, 1);
         })
         .catch(function (err) {
-          console.log(err);
+          this.errorMessage = err;
         });
       }
     }

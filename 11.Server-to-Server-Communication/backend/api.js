@@ -38,12 +38,7 @@ exports.post_users = function(req, res) {
       headers: {
         'authorization': 'JWT '+jwt
       },
-      body: {
-        email: req.body.email,
-        firstname: req.body.firstName,
-        lastname: req.body.lastName,
-        language: 'en_GB'
-      },
+      body: Object.assign(req.body, {language: 'en_GB'}),
       json: true // Automatically parses the JSON string in the response
     };
 
