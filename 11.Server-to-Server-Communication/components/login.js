@@ -17,12 +17,10 @@ new Vue({
         },
         credentials: true
       }).then(function (user) {
-        console.log(user);
         var iframe = document.getElementById('visio_local');
         iframe.src = iframe.src;
       }).catch(function (err) {
         this.errorMessage = 'Error while contacting the server';
-        console.log(err);
       });
     }
   }
