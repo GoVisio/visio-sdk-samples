@@ -126,25 +126,32 @@
             <h3 class="content-title" >Use Visio client SDK</h3>
             <button class="btn btn-default" type="button" v-on:click="showPrivateCalendar">show Visio Calendar</button>
             <div id="ClientSDK" style="display: none;height: 500px;width: 100%;"></div>
-          </div>
-
-          <div class="container" id="visio-sdk" style="padding: 2rem; width:100%">
-            <h3 class="content-title" >Add Visio contact from client sdk</h3>
+            <h4 class="content-title" >Add Visio contact from client sdk</h4>
             <div class="input-group">
               <input type="mail" v-model="contactInput" class="form-control" placeholder="Add contact with email or phone number">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button" v-on:click="addContact">Go!</button>
               </span>
             </div>
+            <h4 class="content-title">My Visio contacts</h4>
+            <div href="#" class="list-group-item" v-for="(contact, index) in contacts">
+              <div v-if="contact.email">
+                <h4 class="list-group-item-heading">{{ contact.email }}</h4>
+              </div>
+              <div v-else>
+                <h4 class="list-group-item-heading">{{ contact.phone }}</h4>
+              </div>
+              <p class="list-group-item-text" >{{ contact.firstname }} {{ contact.lastname }}</p>
+              <button class="btn btn-xs btn-danger" v-on:click="deleteUser(index)">Delete</button>
+            </div>
+          </div>
+          <!--   <div class="input-group">
+          <input type="mail" v-model="input" class="form-control" placeholder="Search for email or phone number">
+          <span class="input-group-btn">
+          <button class="btn btn-default" type="button" v-on:click="showChatModule">Go!</button>
+        </span>
+      </div>-->
 
-            <!--   <div class="input-group">
-            <input type="mail" v-model="input" class="form-control" placeholder="Search for email or phone number">
-            <span class="input-group-btn">
-            <button class="btn btn-default" type="button" v-on:click="showChatModule">Go!</button>
-          </span>
-        </div>-->
-
-      </div>
     </div>
   </div>
 </div>

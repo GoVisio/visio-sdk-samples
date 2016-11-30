@@ -5,7 +5,8 @@ new Vue({
     return {
       user_id: '',
       input: '',
-      contactInput: ''
+      contactInput: '',
+      contacts: []
     }
   },
 
@@ -16,6 +17,7 @@ new Vue({
       language: 'en_GB',
       eventListener: this.getVisioEvents
     });
+    this.fetchContacts();
   },
 
   methods: {
@@ -23,7 +25,6 @@ new Vue({
     getVisioEvents: function(data) {
       console.log(data);
     },
-
     showPrivateCalendar: function() {
       Visio.ui.privateCalendar({
         user:{
@@ -39,7 +40,6 @@ new Vue({
       }, "ClientSDK");
       document.getElementById("ClientSDK").style.display = "block";
     },
-
     showChatModule: function() {
       var self = this;
       Visio.api('/users/search', 'POST', {email: self.input}, function (status, response) {
@@ -51,7 +51,6 @@ new Vue({
         }
       });
     },
-
     addContact: function() {
       var self = this;
       Visio.api('/rooms', 'POST', {
@@ -63,7 +62,16 @@ new Vue({
       function(status, response) {
         console.log(response);
       });
+    },
+    fetchContacts: function() {
+      var self = this;
+      Visio.api('/rooms', 'GET', {}, function(status, response) {
+        response.forEach(function(room) {
+          room.room_members.forEach(function(room_member) {
+            self.contacts.push(room_member.user);
+          });
+        });
+      });
     }
-
   }
 });
