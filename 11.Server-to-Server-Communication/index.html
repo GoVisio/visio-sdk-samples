@@ -125,18 +125,35 @@
           <div class="container" id="visio-sdk" style="padding: 2rem; width:100%">
             <h3 class="content-title" >Use Visio client SDK</h3>
             <button class="btn btn-default" type="button" v-on:click="showPrivateCalendar">show Visio Calendar</button>
-            <div id="ClientSDK" style="height: 600px;width: 100%;"></div>
-            
+            <div id="ClientSDK" style="display: none;height: 500px;width: 100%;"></div>
           </div>
-        </div>
+
+          <div class="container" id="visio-sdk" style="padding: 2rem; width:100%">
+            <h3 class="content-title" >Add Visio contact from client sdk</h3>
+            <div class="input-group">
+              <input type="mail" v-model="contactInput" class="form-control" placeholder="Add contact with email or phone number">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" v-on:click="addContact">Go!</button>
+              </span>
+            </div>
+
+            <!--   <div class="input-group">
+            <input type="mail" v-model="input" class="form-control" placeholder="Search for email or phone number">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button" v-on:click="showChatModule">Go!</button>
+          </span>
+        </div>-->
+
       </div>
     </div>
-  </body>
-  <script src="node_modules/vue/dist/vue.min.js"></script>
-  <script src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
-  <script src="/components/users.js"></script>
-  <script src="/components/search.js"></script>
-  <script src="/components/login.js"></script>
-  <script src="/components/test.js"></script>
-  <script src="/components/visio-sdk.js"></script>
-  </html>
+  </div>
+</div>
+</body>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+<script src="node_modules/vue-resource/dist/vue-resource.min.js"></script>
+<script src="/components/users.js"></script>
+<script src="/components/search.js"></script>
+<script src="/components/login.js"></script>
+<script src="/components/test.js"></script>
+<script src="/components/visio-sdk.js"></script>
+</html>
