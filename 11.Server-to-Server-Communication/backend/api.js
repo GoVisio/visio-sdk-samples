@@ -97,9 +97,9 @@ exports.users = function(req, res) {
       return res.status(200).send(visio_users);
     })
     .catch(function (err) {
-      return res.status(500).send(err.message);
+      return res.status(err.statusCode).send(err.message);
     });
-
+    
   }).catch(function(error) {
     console.log(error);
   });

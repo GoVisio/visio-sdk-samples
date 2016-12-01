@@ -23,7 +23,11 @@ new Vue({
         this.users = users.body
       })
       .catch(function (err) {
-        this.errorMessage = err;
+        if (err.status === 401) {
+          this.errorMessage = '401 unauthorized, please verify that you created an app on admin.vis.io and the provided API_KEY and SECRET'
+        }else {
+          this.errorMessage = err;
+        }
       });
     },
 
