@@ -34,126 +34,131 @@
             <h4>Step 1 : Create an app on <a href="https://admin.vis.io">Vis.io Admin interface</a></h4>
             <div class="container">
               <div class="col-xs-12" style="padding: 1.5rem;">
-                <img  style="max-width: 60%;" src="/assets/images/sample.png"></img>
+                <img  style="max-width: 62%;" src="/assets/images/sample.png"></img>
               </div>
             </div>
           </br>
-          <h4>Step 2: Add your secret in users.js and create users</h3>
-          </br>
-        </div>
-
-        <div class="container" id="users" style="padding: 2rem; width:100%">
-          <h3 class="content-title" id="Users">Create, fetch & delete users</h3>
-          <div class="col-sm-7">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3>Create a user</h3>
-              </div>
-              <div class="panel-body">
-                <div>
-                  <input style="margin-bottom: 1rem;" type="email" class="form-control" placeholder="Email" v-model="user.email">
-                  <p>Or</p>
-                  <input style="margin-bottom: 1rem;" type="tel" class="form-control" placeholder="Telephone number" v-model="user.phone">
-                  <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="First Name" v-model="user.firstname"></textarea>
-                  <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="Last Name" v-model="user.lastname"></textarea>
-                  <p style="font-weight:500;">{{errorMessage}}</p>
-                  <button class="btn btn-primary" v-on:click="addUser">Create user</button>
-                </div>
-              </div>
+          <h4>Step 2: Copy the API_KEY and SECRET from the app you just created in /backend/helpers.js</h4>
+          <div class="container">
+            <div class="col-xs-12" style="padding: 1.5rem;">
+              <img  style="max-width: 62%;" src="/assets/images/backend-helpers.png"></img>
             </div>
           </div>
-          <div class="col-sm-5">
-            <div class="list-group">
-              <div href="#" class="list-group-item" v-for="(user, index) in users">
-                <div v-if="user.email">
-                  <h4 class="list-group-item-heading">{{ user.email }}</h4>
-                </div>
-                <div v-else>
-                  <h4 class="list-group-item-heading">{{ user.phone }}</h4>
-                </div>
-                <p class="list-group-item-text" >{{ user.user_account.firstname }} {{ user.user_account.lastname }}</p>
-                <button class="btn btn-xs btn-danger" v-on:click="deleteUser(index)">Delete</button>
+        </br>
+      </div>
+
+      <div class="container" id="users" style="padding: 2rem; width:100%">
+        <h3 class="content-title" id="Users">Create, fetch & delete users</h3>
+        <div class="col-sm-7">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>Create a user</h3>
+            </div>
+            <div class="panel-body">
+              <div>
+                <input style="margin-bottom: 1rem;" type="email" class="form-control" placeholder="Email" v-model="user.email">
+                <p>Or</p>
+                <input style="margin-bottom: 1rem;" type="tel" class="form-control" placeholder="Telephone number" v-model="user.phone">
+                <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="First Name" v-model="user.firstname"></textarea>
+                <textarea style="margin-bottom: 1rem;" class="form-control" placeholder="Last Name" v-model="user.lastname"></textarea>
+                <p style="font-weight:500;">{{errorMessage}}</p>
+                <button class="btn btn-primary" v-on:click="addUser">Create user</button>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="container" id="search" style="padding: 2rem; width:100%">
-          <h3 class="content-title" id="Search">Search SDK user with email</h3>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="input-group">
-                <input type="mail" v-model="input" class="form-control" placeholder="Search for email or phone number">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button" v-on:click="findUser">Go!</button>
-                </span>
-              </div>
-
-              <div class="panel panel-default" style="margin-top: 2rem;overflow-x:scroll">
-                <div v-if="user.email" class="panel-heading">Email: {{user.email}}</div>
-                <div v-else="user.phone" class="panel-heading">Phone: {{user.phone}}</div>
-                <div class="panel-body">
-                  <p>firstName: {{user.user_account.firstname}}</p>
-                  <p>lastName: {{user.user_account.lastname}}</p>
-                  <div>
-                    <textarea style="width: 100%;" placeholder="JWT value">{{signed_token}}</textarea >
-                    </div>
-                    <p style="font-weight:500;">{{errorMessage}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="container" id="login" style="padding: 2rem; width:100%">
-            <h3 class="content-title" id="Login">Programmatically log user in</h3>
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="input-group">
-                  <input style="margin-bottom: 1rem;" type="email" v-model="email" class="form-control" placeholder="email or phone number">
-                  <input style="margin-bottom: 1rem;" type="text" v-model="JWT" class="form-control" placeholder="JWT">
-                  <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
-                </div>
-              </div>
-              <div class="col-xs-12">
-                <iframe id="visio_local" style="width: 710px;
-                height: 450px;" src="http://localhost:5000/"></iframe>
-              </div>
-            </div>
-          </div>
-
-          <div class="container" id="visio-sdk" style="padding: 2rem; width:100%">
-            <h3 class="content-title" >Use Visio client SDK</h3>
-            <button class="btn btn-default" type="button" v-on:click="showPrivateCalendar">show Visio Calendar</button>
-            <div id="ClientSDK" style="display: none;height: 500px;width: 100%;"></div>
-            <h4 class="content-title" >Add Visio contact from client sdk</h4>
-            <div class="input-group">
-              <input type="mail" v-model="contactInput" class="form-control" placeholder="Add contact with email or phone number">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button" v-on:click="addContact">Go!</button>
-              </span>
-            </div>
-            <h4 class="content-title">My Visio contacts</h4>
-            <div href="#" class="list-group-item" v-for="(contact, index) in contacts">
-              <div v-if="contact.email">
-                <h4 class="list-group-item-heading">{{ contact.email }}</h4>
+        <div class="col-sm-5">
+          <div class="list-group">
+            <div href="#" class="list-group-item" v-for="(user, index) in users">
+              <div v-if="user.email">
+                <h4 class="list-group-item-heading">{{ user.email }}</h4>
               </div>
               <div v-else>
-                <h4 class="list-group-item-heading">{{ contact.phone }}</h4>
+                <h4 class="list-group-item-heading">{{ user.phone }}</h4>
               </div>
-              <p class="list-group-item-text" >{{ contact.firstname }} {{ contact.lastname }}</p>
+              <p class="list-group-item-text" >{{ user.user_account.firstname }} {{ user.user_account.lastname }}</p>
               <button class="btn btn-xs btn-danger" v-on:click="deleteUser(index)">Delete</button>
             </div>
           </div>
-          <!--   <div class="input-group">
-          <input type="mail" v-model="input" class="form-control" placeholder="Search for email or phone number">
-          <span class="input-group-btn">
-          <button class="btn btn-default" type="button" v-on:click="showChatModule">Go!</button>
-        </span>
-      </div>-->
+        </div>
+      </div>
 
-    </div>
+      <div class="container" id="search" style="padding: 2rem; width:100%">
+        <h3 class="content-title" id="Search">Search SDK user with email</h3>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="input-group">
+              <input type="mail" v-model="input" class="form-control" placeholder="Search for email or phone number">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" v-on:click="findUser">Go!</button>
+              </span>
+            </div>
+
+            <div class="panel panel-default" style="margin-top: 2rem;overflow-x:scroll">
+              <div v-if="user.email" class="panel-heading">Email: {{user.email}}</div>
+              <div v-else="user.phone" class="panel-heading">Phone: {{user.phone}}</div>
+              <div class="panel-body">
+                <p>firstName: {{user.user_account.firstname}}</p>
+                <p>lastName: {{user.user_account.lastname}}</p>
+                <div>
+                  <textarea style="width: 100%;" placeholder="JWT value">{{signed_token}}</textarea >
+                  </div>
+                  <p style="font-weight:500;">{{errorMessage}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="login" style="padding: 2rem; width:100%">
+          <h3 class="content-title" id="Login">Programmatically log user in</h3>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="input-group">
+                <input style="margin-bottom: 1rem;" type="email" v-model="email" class="form-control" placeholder="email or phone number">
+                <input style="margin-bottom: 1rem;" type="text" v-model="JWT" class="form-control" placeholder="JWT">
+                <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <iframe id="visio_local" style="width: 710px;
+              height: 450px;" src="http://localhost:5000/"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="visio-sdk" style="padding: 2rem; width:100%">
+          <h3 class="content-title" >Use Visio client SDK</h3>
+          <button class="btn btn-default" type="button" v-on:click="showPrivateCalendar">show Visio Calendar</button>
+          <div id="ClientSDK" style="display: none;height: 500px;width: 100%;"></div>
+          <h4 class="content-title" >Add Visio contact from client sdk</h4>
+          <div class="input-group">
+            <input type="mail" v-model="contactInput" class="form-control" placeholder="Add contact with email or phone number">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" v-on:click="addContact">Go!</button>
+            </span>
+          </div>
+          <h4 class="content-title">My Visio contacts</h4>
+          <div href="#" class="list-group-item" v-for="(contact, index) in contacts">
+            <div v-if="contact.email">
+              <h4 class="list-group-item-heading">{{ contact.email }}</h4>
+            </div>
+            <div v-else>
+              <h4 class="list-group-item-heading">{{ contact.phone }}</h4>
+            </div>
+            <p class="list-group-item-text" >{{ contact.firstname }} {{ contact.lastname }}</p>
+            <button class="btn btn-xs btn-danger" v-on:click="deleteUser(index)">Delete</button>
+          </div>
+        </div>
+        <!--   <div class="input-group">
+        <input type="mail" v-model="input" class="form-control" placeholder="Search for email or phone number">
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="button" v-on:click="showChatModule">Go!</button>
+      </span>
+    </div>-->
+
   </div>
+</div>
 </div>
 </body>
 <script src="node_modules/vue/dist/vue.min.js"></script>
