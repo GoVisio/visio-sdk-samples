@@ -31,7 +31,7 @@
         <div class="col-xs-8">
           <div class="container" style="width: 100%;">
             <h3 id="Installation" class="content-title">Installation</h3>
-            <h4>Step 1 : Create an app on <a href="https://admin.vis.io">Vis.io Admin interface</a></h4>
+            <h4>Step 1: Create an app on <a target="_blank" href="https://admin.vis.io">Vis.io Admin interface</a></h4>
             <div class="container">
               <div class="col-xs-12" style="padding: 1.5rem;">
                 <img  style="max-width: 62%;" src="/assets/images/sample.png"></img>
@@ -87,6 +87,7 @@
 
       <div class="container" id="search" style="padding: 2rem; width:100%">
         <h3 class="content-title" id="Search">Search SDK user with email</h3>
+        <p>Once you've created a user, you can get his Json Web Token(JWT) using the search API with the user email/phone number, the JWT can be used to programmatically log the user in</p>
         <div class="row">
           <div class="col-xs-12">
             <div class="input-group">
@@ -114,6 +115,7 @@
 
         <div class="container" id="login" style="padding: 2rem; width:100%">
           <h3 class="content-title" id="Login">Programmatically log user in</h3>
+          <p>Now, you can log a user In using the JWT and his email/phone, we'll create a session on our side, so that you only have to log the user once per device</p>
           <div class="row">
             <div class="col-xs-12">
               <div class="input-group">
@@ -131,6 +133,7 @@
 
         <div class="container" id="visio-sdk" style="padding: 2rem; width:100%">
           <h3 class="content-title" >Use Visio client SDK</h3>
+          <p>Once you've successfully logged a user in, you can use <a target="_blank" href="https://github.com/GoVisio/visio-sdk-samples" >Visio client SDK modules</a></p>
           <button class="btn btn-default" type="button" v-on:click="showPrivateCalendar">show Visio Calendar</button>
           <div id="ClientSDK" style="display: none;height: 500px;width: 100%;"></div>
           <h4 class="content-title" >Add Visio contact from client sdk</h4>
