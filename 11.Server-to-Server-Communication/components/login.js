@@ -11,7 +11,7 @@ new Vue({
 
   methods: {
     logUser: function () {
-      Visio.lognWithJWT(this.JWT, function(status, response) {
+      Visio.login(this.JWT, function(status, response) {
         if (status === 200) {
           var iframe = document.getElementById('visio_local');
           iframe.src = iframe.src;
