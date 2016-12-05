@@ -37,6 +37,7 @@ new Vue({
         this.$http.post('/api/users', this.user).then(function (res) {
           this.user.user_account = Object.assign(this.user);
           this.users.push(this.user);
+          this.resetUserData();
         }).catch(function (err) {
           this.errorMessage = err.body;
         });
@@ -57,6 +58,15 @@ new Vue({
           this.errorMessage = err;
         });
       }
+    },
+
+    resetUserData: function() {
+      this.user = {
+        firstname: '',
+        lastname: '',
+        email: '',
+        phone: ''
+      };
     }
   }
 });
