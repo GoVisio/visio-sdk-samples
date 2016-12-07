@@ -1,7 +1,7 @@
 # visio-sdk-samples
 Example applications that use the Vis.io SDK : [visio.readme.io](https://visio.readme.io)
 
-## 11.Server-to-Server-Communication
+## Server-to-Server-Communication
 
 ### Overview
 
@@ -12,6 +12,8 @@ In this sample we create & delete visio users, and log them in programmatically 
 
 ### Quick Start Install
 ```
+$ git clone https://github.com/GoVisio/visio-sdk-samples
+$ cd visio-sdk-samples/Server-to-Server-Communication
 $ npm install
 $ node server.js
 ```
