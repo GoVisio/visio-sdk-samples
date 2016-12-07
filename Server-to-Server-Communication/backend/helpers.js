@@ -2,9 +2,9 @@ var Q = require('Q');
 var jwt = require('jsonwebtoken');
 var moment = require('moment');
 
-const VISIO_APIKEY = 'MrD(Y]X87P=]6vL}yk.QdRmaF)xqX>';
-const VISIO_SECRET = '[c0wj8W>[M7{f>5}o=Nd(yAxL6J4(WzZQmMxF@)]';
-const VISIO_JWT_ENCODING_SECRET = '4MW)c2]f{2qaFm^3f[C36]>7c5rV9!x-9zNNR{V>';
+const VISIO_APIKEY = 'YOURKEY';
+const VISIO_SECRET = 'YOURSECRET';
+const VISIO_JWT_ENCODING_SECRET = 'VISIO_ENCODING_SECRET';
 
 exports.signJWTToken = function () {
   var deferred = Q.defer();
