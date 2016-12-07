@@ -14,7 +14,6 @@ In this sample we create & delete visio users, and log them in programmatically 
 ```
 $ npm install
 $ node server.js
-
 ```
 The project will be available at [localhost:8080](http://localhost:8080/)
 
