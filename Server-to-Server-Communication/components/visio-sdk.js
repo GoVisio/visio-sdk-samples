@@ -12,7 +12,7 @@ new Vue({
 
   mounted: function () {
     Visio.init({
-      api_key: 'Ue$sgR8Nr5:_LUfA4rDMT3JpyRd[84',
+      api_key: 'YOUR_API_KEY',
       cookie:true,
       language: 'en_GB',
       eventListener: this.getVisioEvents
@@ -66,11 +66,13 @@ new Vue({
     fetchContacts: function() {
       var self = this;
       Visio.api('/rooms', 'GET', {}, function(status, response) {
-        response.forEach(function(room) {
-          room.room_members.forEach(function(room_member) {
-            self.contacts.push(room_member.user);
+        if (response && response.length > 0) {
+          response.forEach(function(room) {
+            room.room_members.forEach(function(room_member) {
+              self.contacts.push(room_member.user);
+            });
           });
-        });
+        }
       });
     }
   }
