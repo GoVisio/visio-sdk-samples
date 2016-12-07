@@ -1,5 +1,5 @@
 {
-  "name": "visio APIs usage sample ",
+  "name": "visio_APIs_usage_sample",
   "version": "1.0.0",
   "description": "Demo application for vis.io APIs",
   "main": "server.js",
