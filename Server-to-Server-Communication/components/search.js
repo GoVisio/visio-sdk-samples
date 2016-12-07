@@ -24,7 +24,7 @@ new Vue({
       this.$http.post('/api/users/search', {input: this.input})
       .then(function (user) {
         if (user.body && user.body.size !== 0) {
-          this.user = user.body.user;
+          this.user = user.body;
           this.signed_token = user.body.signed_token;
           this.errorMessage= '';
         }else {
