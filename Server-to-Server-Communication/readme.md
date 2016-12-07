@@ -25,6 +25,8 @@ You can create a Visio company, and get a public key & a secret API key [here](h
 
 Once created, copy your key + secret in backend/helpers.js, the keys will be used to generate a [Json Web token (JWT)](https://jwt.io/) to authenticate your company
 
+You'll also need to copy your public apiKey in components/visio-sdk.js `Visio.init()` method, to initialise the client sdk
+
 ### API documentation
 
 The documentation for the APIs & the client-side SDK can be found at [docs.vis.io](http://docs.vis.io/)
