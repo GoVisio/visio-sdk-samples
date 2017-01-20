@@ -1,7 +1,7 @@
 var rp = require('request-promise');
 var helpers = require('./helpers');
 
-const BASE_URL = 'https://api.vis.io/admin'
+const BASE_URL = 'http://localhost:3003/admin'
 
 exports.delete_user = function (req, res) {
   helpers.signJWTToken().then(function(jwt) {

@@ -12,7 +12,7 @@ new Vue({
 
   mounted: function () {
     Visio.init({
-      api_key: 'YOUR_API_KEY',
+      api_key: 'BfMfpG)y0Rhyv)-b?AU89q=m38fgt8L{9IoBVo?z',
       cookie:true,
       language: 'en_GB',
       eventListener: this.getVisioEvents
