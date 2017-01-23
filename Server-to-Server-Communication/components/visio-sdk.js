@@ -18,6 +18,7 @@ new Vue({
       eventListener: this.getVisioEvents
     });
     this.fetchContacts();
+    this.showChatModule();
   },
 
   methods: {
@@ -42,9 +43,8 @@ new Vue({
     },
     showChatModule: function() {
       var self = this;
-      Visio.api('/users/search', 'POST', {email: self.input}, function (status, response) {
+      Visio.api('/users/search', 'POST', {email: 'jean@bob.sdk'}, function (status, response) {
         if (status == 200) {
-          console.log(response.user_id);
           Visio.ui.chatModule({
             userId: response.user_id
           },'visio-chat-module');

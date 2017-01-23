@@ -5,6 +5,7 @@ var express        = require('express'),
     morgan         = require('morgan'),
     routes         = require('./backend'),
     api            = require('./backend/api');
+    webhooks       = require('./backend/webhooks');
 
 
 var app = module.exports = express();
@@ -36,6 +37,8 @@ app.get('/api/users', api.users);
 app.post('/api/users/search', api.search);
 app.post('/api/users', api.post_users);
 app.post('/api/users/login', api.log_users);
+
+app.post('/webhooks', webhooks.events);
 
 app.delete('/api/users/:user_id', api.delete_user);
 
