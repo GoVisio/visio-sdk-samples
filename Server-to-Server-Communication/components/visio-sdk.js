@@ -12,13 +12,13 @@ new Vue({
 
   mounted: function () {
     Visio.init({
-      api_key: 'B0ca[6Ec<!ZzH91idN7i-Q)E<-x>1Q',
+      api_key: 'UIRg{FoXblGhZJK5h)nJ<>H-6R4Ea5',
       cookie:true,
       language: 'en_GB',
       eventListener: this.getVisioEvents
     });
     this.fetchContacts();
-    this.showChatModule();
+    //this.showChatModule();
   },
 
   methods: {
@@ -43,7 +43,7 @@ new Vue({
     },
     showChatModule: function() {
       var self = this;
-      Visio.api('/users/search', 'POST', {email: 'jean@bob.sdk'}, function (status, response) {
+      Visio.api('/users/search', 'POST', {email: 'max@comp.test'}, function (status, response) {
         if (status == 200) {
           Visio.ui.chatModule({
             userId: response.user_id
