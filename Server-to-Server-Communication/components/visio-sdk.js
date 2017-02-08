@@ -5,6 +5,8 @@ new Vue({
     return {
       user_id: '',
       input: '',
+      targetForCall: '',
+      targetForChat: '',
       contactInput: '',
       contacts: []
     }
@@ -12,13 +14,13 @@ new Vue({
 
   mounted: function () {
     Visio.init({
-      api_key: 'B0ca[6Ec<!ZzH91idN7i-Q)E<-x>1Q',
+      api_key: '2QxC-u@$^}pJ[5B0L5j:mdT>KDZisi',
       cookie:true,
       language: 'en_GB',
       eventListener: this.getVisioEvents
     });
     this.fetchContacts();
-    this.showChatModule();
+    //this.showChatModule();
   },
 
   methods: {
@@ -43,11 +45,23 @@ new Vue({
     },
     showChatModule: function() {
       var self = this;
-      Visio.api('/users/search', 'POST', {email: 'jean@bob.sdk'}, function (status, response) {
+      Visio.api('/users/search', 'POST', {email: 'rayman@lol.lel'}, function (status, response) {
         if (status == 200) {
+          document.getElementById('visio-chat-module').style.display = "block";
           Visio.ui.chatModule({
             userId: response.user_id
           },'visio-chat-module');
+        }
+      });
+    },
+    showCallModule: function() {
+      var self = this;
+      Visio.api('/users/search', 'POST', {email: self.targetForCall}, function (status, response) {
+        if (status == 200) {
+          document.getElementById('visio-call-module').style.display = "block";
+          Visio.ui.callModule({
+            userId: response.user_id
+          },'visio-call-module');
         }
       });
     },

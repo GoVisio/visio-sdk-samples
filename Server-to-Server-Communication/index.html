@@ -162,8 +162,14 @@
           <p class="list-group-item-text" >{{ contact.firstname }} {{ contact.lastname }}</p>
           <button class="btn btn-xs btn-danger" v-on:click="deleteUser(index)">Delete</button>
         </div>
-          <h4 class="content-title">Use Visio UI chat Module...</h4>
-        <div style="height: 500px;" id="visio-chat-module"></div>
+          <h4 class="content-title">Use Visio UI chat Module</h4>
+          <input type="mail" v-model="targetForChat" class="form-control" placeholder="Contact email for the chat" style="margin-bottom: 10px;" >
+          <button class="btn btn-primary" v-on:click="showChatModule()">Show UI chat module</button>
+        <div style="height: 500px;display: none;" id="visio-chat-module"></div>
+        <h4 class="content-title">Use Visio UI call Module</h4>
+        <input type="mail" v-model="targetForCall" class="form-control" placeholder="Contact email for the call" style="margin-bottom: 10px;" >
+        <button class="btn btn-primary" v-on:click="showCallModule()">Show UI call module</button>
+        <div style="height: 500px;display: none;" id="visio-call-module"></div>
       </div>
 
       <div class="container" id="YourOwnChat" style="padding: 2rem; width:100%">
