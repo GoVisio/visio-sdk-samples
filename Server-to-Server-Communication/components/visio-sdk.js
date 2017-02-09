@@ -7,24 +7,28 @@ new Vue({
       input: '',
       targetForCall: '',
       targetForChat: '',
+      targetForLiteCall: '',
       contactInput: '',
-      contacts: []
+      contacts: [],
+      error: {
+        targetForCall: '',
+        targetForChat: '',
+        targetForLiteCall: ''
+      }
     }
   },
 
   mounted: function () {
     Visio.init({
-      api_key: '2QxC-u@$^}pJ[5B0L5j:mdT>KDZisi',
+      api_key: '$p}9kBNWPQb:CE<_xC9@,zgdD@{^qK',
       cookie:true,
       language: 'en_GB',
       eventListener: this.getVisioEvents
     });
     this.fetchContacts();
-    //this.showChatModule();
   },
 
   methods: {
-
     getVisioEvents: function(data) {
       console.log(data);
     },
@@ -45,25 +49,51 @@ new Vue({
     },
     showChatModule: function() {
       var self = this;
-      Visio.api('/users/search', 'POST', {email: 'rayman@lol.lel'}, function (status, response) {
-        if (status == 200) {
-          document.getElementById('visio-chat-module').style.display = "block";
-          Visio.ui.chatModule({
-            userId: response.user_id
-          },'visio-chat-module');
-        }
-      });
+      if (self.targetForChat) {
+        self.error.targetForChat = null;
+        Visio.api('/users/search', 'POST', {email: self.targetForChat}, function (status, response) {
+          if (status == 200) {
+            document.getElementById('visio-chat-module').style.display = "block";
+            Visio.ui.chatModule({
+              userId: response.user_id
+            },'visio-chat-module');
+          }
+        });
+      }else {
+        self.error.targetForChat = 'email is required to chat';
+      }
     },
     showCallModule: function() {
       var self = this;
-      Visio.api('/users/search', 'POST', {email: self.targetForCall}, function (status, response) {
-        if (status == 200) {
-          document.getElementById('visio-call-module').style.display = "block";
-          Visio.ui.callModule({
-            userId: response.user_id
-          },'visio-call-module');
-        }
-      });
+      if (self.targetForCall) {
+        self.error.targetForCall = null;
+        Visio.api('/users/search', 'POST', {email: self.targetForCall}, function (status, response) {
+          if (status == 200) {
+            document.getElementById('visio-call-module').style.display = "block";
+            Visio.ui.callModule({
+              userId: response.user_id
+            },'visio-call-module');
+          }
+        });
+      }else {
+        self.error.targetForCall = 'email is required to call';
+      }
+    },
+    showLiteCallModule: function() {
+      var self = this;
+      if (self.targetForCall) {
+        self.error.targetForLiteCall = null;
+        Visio.api('/users/search', 'POST', {email: self.targetForLiteCall}, function (status, response) {
+          if (status == 200) {
+            document.getElementById('visio-litecall-module').style.display = "block";
+            Visio.ui.callModule({
+              userId: response.user_id
+            },'visio-litecall-module');
+          }
+        });
+      }else {
+        self.error.targetForLiteCall = 'email is required to call';
+      }
     },
     addContact: function() {
       var self = this;
