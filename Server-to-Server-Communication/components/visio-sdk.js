@@ -85,7 +85,7 @@ new Vue({
         self.error.targetForLiteCall = null;
         Visio.api('/litecall', 'POST', {
           email: self.targetForLiteCall,
-
+          device: ''
         }, function (status, response) {
           if (status == 200) {
             document.getElementById('visio-litecall-module').style.display = "block";
