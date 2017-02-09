@@ -81,13 +81,17 @@ new Vue({
     },
     showLiteCallModule: function() {
       var self = this;
-      if (self.targetForCall) {
+      if (self.targetForLiteCall) {
         self.error.targetForLiteCall = null;
-        Visio.api('/users/search', 'POST', {email: self.targetForLiteCall}, function (status, response) {
+        Visio.api('/litecall', 'POST', {
+          email: self.targetForLiteCall,
+
+        }, function (status, response) {
           if (status == 200) {
             document.getElementById('visio-litecall-module').style.display = "block";
-            Visio.ui.callModule({
-              userId: response.user_id
+            Visio.ui.litecallModule({
+              token: response.token,
+              device: Math.floor((Math.random() * 100000) + 1)
             },'visio-litecall-module');
           }
         });
