@@ -14,7 +14,7 @@ In this sample we create & delete visio users, and log them in programmatically 
 ```
 $ git clone https://github.com/GoVisio/visio-sdk-samples
 $ cd visio-sdk-samples/Server-to-Server-Communication
-$ npm install
+$ npm install # Or yarn install
 $ node server.js
 ```
 The project will be available at [localhost:8080](http://localhost:8080/)
