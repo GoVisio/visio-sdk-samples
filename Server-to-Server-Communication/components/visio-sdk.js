@@ -1,3 +1,5 @@
+var socket = io.connect();
+
 new Vue({
   el: '#visio-sdk',
 
@@ -20,7 +22,7 @@ new Vue({
 
   mounted: function () {
     Visio.init({
-      api_key: '$p}9kBNWPQb:CE<_xC9@,zgdD@{^qK',
+      api_key: 'rR]Ra1ucKQhekA#zZE!3<^j,L<RCS6',
       cookie:true,
       language: 'en_GB',
       eventListener: this.getVisioEvents

@@ -5,8 +5,10 @@
   <title>Sample Vis.io back-end API usage</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
   <!--<script src="https://sdk.vis.io/v1.0/sdk.min.js"></script>-->
-  <script src="http://localhost:5002/sdk.js"></script>
+  <script src="https://sdk.dev.vis.io/v1.1/sdk.min.js"></script>
+  <!--<script src="http://localhost:5002/sdk.js"></script>-->
 </head>
 <body style="padding-top: 70px;overflow-x: hidden;">
 
@@ -132,10 +134,12 @@
               <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
             </div>
           </div>
+          <!--
           <div class="col-xs-12">
             <iframe id="visio_local" style="width: 710px;
             height: 450px;" src="http://localhost:5000/"></iframe>
           </div>
+        -->
         </div>
       </div>
 
