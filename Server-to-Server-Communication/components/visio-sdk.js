@@ -1,5 +1,3 @@
-var socket = io.connect();
-
 new Vue({
   el: '#visio-sdk',
 
