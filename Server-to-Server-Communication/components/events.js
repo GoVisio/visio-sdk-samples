@@ -15,12 +15,13 @@ socket.on('event', function (event) {
   if (event.type === 'incoming_call' && user.id_user && event.data.from_user_id !== user.id_user) {
     var r = confirm('incoming_call from : '+event.data.display_name);
     if (r == true) {
-      document.getElementById('visio-chat-module').style.display = "block";
-      Visio.ui.chatModule({
-        userId: event.data.from_user_id
-      },'visio-chat-module');
+      document.getElementById('visio-call-module').style.display = "block";
+      Visio.ui.callModule({
+        userId: event.data.from_user_id,
+        allow_incoming_call: true
+      },'visio-call-module');
     } else {
-      Visio.api('/calls/2/decline', 'POST', {}, function(status,response) {
+      Visio.api('/calls/'+event.data.call_id+'/decline', 'POST', {}, function(status,response) {
         if(status == 200){
           console.log('call '+event.data.call_id+' was refused by the user');
         }
