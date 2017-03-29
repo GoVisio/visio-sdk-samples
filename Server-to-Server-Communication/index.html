@@ -5,6 +5,7 @@
   <title>Sample Vis.io back-end API usage</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
   <!--<script src="https://sdk.vis.io/v1.0/sdk.min.js"></script>-->
   <script src="https://sdk.dev.vis.io/v1.1/sdk.min.js"></script>
@@ -175,7 +176,11 @@
         <input type="mail" v-model="targetForCall" class="form-control" placeholder="Contact email for the call" style="margin-bottom: 10px;" >
         <p style="font-weight:500;" v-if="error.targetForCall">{{error.targetForCall}}</p>
         <button class="btn btn-primary" v-on:click="showCallModule()">Show UI call module</button>
-        <div style="height: 500px;display: none;" id="visio-call-module"></div>
+        <div style="height: 500px;display: none;" id="visio-call-module">
+        </div>
+        <button id="stop-call" v-on:click="stopCall()" class="btn btn-danger">
+          Stop call using Visio API
+        </button>
         <h4 class="content-title">Use Visio UI Litecall Module</h4>
         <input type="mail" v-model="targetForLiteCall" class="form-control" placeholder="Contact email for the litecall" style="margin-bottom: 10px;" >
         <p style="font-weight:500;" v-if="error.targetForLiteCall">{{error.targetForLiteCall}}</p>

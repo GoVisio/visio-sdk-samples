@@ -79,6 +79,17 @@ new Vue({
         self.error.targetForCall = 'email is required to call';
       }
     },
+    stopCall: function () {
+      Visio.api('/calls', 'GET', {}, function (status, response) {
+        if (status == 200) {
+          Visio.api('/calls/'+response[0].id_call+'/stop', 'POST', {}, function (status, response) {
+            if (status == 200) {
+              console.log(response);
+            }
+          });
+        }
+      });
+    },
     showLiteCallModule: function() {
       var self = this;
       if (self.targetForLiteCall) {

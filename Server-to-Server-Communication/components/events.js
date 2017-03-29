@@ -11,8 +11,7 @@ Visio.api('/auth/me', 'GET', {}, function(status,response) {
 });
 
 socket.on('event', function (event) {
-  console.log(event);
-  if (event.type === 'incoming_call' && user.id_user && event.data.from_user_id !== user.id_user) {
+  if (event.type === 'incoming_call' && user.id_user && event.data.from_user_id !== user.id_user && event.data.to_id === user.id_user) {
     var r = confirm('incoming_call from : '+event.data.display_name);
     if (r == true) {
       document.getElementById('visio-call-module').style.display = "block";
