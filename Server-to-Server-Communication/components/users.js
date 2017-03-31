@@ -1,7 +1,7 @@
 new Vue({
   el: '#users',
 
-  data: () => {
+  data: function() {
     return {
       errorMessage: '',
       user: { firstname: '', lastname: '', email: '', phone: ''},

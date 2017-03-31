@@ -1,7 +1,7 @@
 new Vue({
   el: '#test',
 
-  data: () => {
+  data: function() {
     return {
       email: '',
       JWT: '',

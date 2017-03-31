@@ -1,7 +1,7 @@
 new Vue({
   el: '#YourOwnChat',
 
-  data: () => {
+  data: function() {
     return {
       'email': '',
       'message': '',

@@ -1,7 +1,7 @@
 new Vue({
   el: '#visio-sdk',
 
-  data: () => {
+  data: function() {
     return {
       user_id: '',
       input: '',
@@ -124,12 +124,18 @@ new Vue({
     },
     fetchContacts: function() {
       var self = this;
-      Visio.api('/rooms', 'GET', {}, function(status, response) {
-        if (response && response.length > 0) {
-          response.forEach(function(room) {
-            room.room_members.forEach(function(room_member) {
-              self.contacts.push(room_member.user);
-            });
+      Visio.api('/auth/me', 'GET', {}, function(status, user) {
+        if(status == 200){
+          Visio.api('/rooms', 'GET', {}, function(status, response) {
+            if (response && response.length > 0) {
+              response.forEach(function(room) {
+                room.room_members.forEach(function(room_member) {
+                  if (room_member.user_id !== user.id_user) {
+                    self.contacts.push(room_member.user);
+                  }
+                });
+              });
+            }
           });
         }
       });
