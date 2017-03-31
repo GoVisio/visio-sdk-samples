@@ -1,13 +1,12 @@
 var rp = require('request-promise');
 var helpers = require('./helpers');
-
-const BASE_URL = 'https://api.vis.io/admin'
+var config = require('../config.js');
 
 exports.delete_user = function (req, res) {
   helpers.signJWTToken().then(function(jwt) {
 
     var options = {
-      uri: BASE_URL+'/users/'+req.params.user_id,
+      uri: config.base_url+'/users/'+req.params.user_id,
       method: 'DELETE',
       headers: {
         'authorization': 'JWT '+jwt
@@ -33,7 +32,7 @@ exports.post_users = function(req, res) {
   helpers.signJWTToken().then(function(jwt) {
 
     var options = {
-      uri: BASE_URL+'/users/',
+      uri: config.base_url+'/users/',
       method: 'POST',
       headers: {
         'authorization': 'JWT '+jwt
@@ -59,7 +58,7 @@ exports.user = function (req, res) {
   helpers.signJWTToken().then(function(jwt) {
 
     var options = {
-      uri: BASE_URL+'/users/'+req.params.user_id,
+      uri: config.base_url+'/users/'+req.params.user_id,
       headers: {
         'authorization': 'JWT '+jwt
 
@@ -84,7 +83,7 @@ exports.users = function(req, res) {
   helpers.signJWTToken().then(function(jwt) {
 
     var options = {
-      uri: BASE_URL+'/users',
+      uri: config.base_url+'/users',
       headers: {
         'authorization': 'JWT '+jwt
 
@@ -107,7 +106,7 @@ exports.users = function(req, res) {
 
 exports.log_users = function(req, res) {
   var options = {
-    uri: BASE_URL+'/users/login',
+    uri: config.base_url+'/users/login',
     method: 'POST',
     headers: {
       'authorization': 'JWT '+req.body.JWT
@@ -128,7 +127,7 @@ exports.log_users = function(req, res) {
 exports.search = function(req, res) {
   helpers.signJWTToken().then(function(jwt) {
     var options = {
-      uri: BASE_URL+'/users/search',
+      uri: config.base_url+'/users/search',
       method: 'POST',
       headers: {
         'authorization': 'JWT '+jwt

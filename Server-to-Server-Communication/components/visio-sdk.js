@@ -1,7 +1,7 @@
 new Vue({
   el: '#visio-sdk',
 
-  data: () => {
+  data: function() {
     return {
       user_id: '',
       input: '',
@@ -20,7 +20,7 @@ new Vue({
 
   mounted: function () {
     Visio.init({
-      api_key: '$p}9kBNWPQb:CE<_xC9@,zgdD@{^qK',
+      api_key: 'rR]Ra1ucKQhekA#zZE!3<^j,L<RCS6',
       cookie:true,
       language: 'en_GB',
       eventListener: this.getVisioEvents
@@ -79,6 +79,17 @@ new Vue({
         self.error.targetForCall = 'email is required to call';
       }
     },
+    stopCall: function () {
+      Visio.api('/calls', 'GET', {}, function (status, response) {
+        if (status == 200) {
+          Visio.api('/calls/'+response[0].id_call+'/stop', 'POST', {}, function (status, response) {
+            if (status == 200) {
+              console.log(response);
+            }
+          });
+        }
+      });
+    },
     showLiteCallModule: function() {
       var self = this;
       if (self.targetForLiteCall) {
@@ -113,12 +124,18 @@ new Vue({
     },
     fetchContacts: function() {
       var self = this;
-      Visio.api('/rooms', 'GET', {}, function(status, response) {
-        if (response && response.length > 0) {
-          response.forEach(function(room) {
-            room.room_members.forEach(function(room_member) {
-              self.contacts.push(room_member.user);
-            });
+      Visio.api('/auth/me', 'GET', {}, function(status, user) {
+        if(status == 200){
+          Visio.api('/rooms', 'GET', {}, function(status, response) {
+            if (response && response.length > 0) {
+              response.forEach(function(room) {
+                room.room_members.forEach(function(room_member) {
+                  if (room_member.user_id !== user.id_user) {
+                    self.contacts.push(room_member.user);
+                  }
+                });
+              });
+            }
           });
         }
       });

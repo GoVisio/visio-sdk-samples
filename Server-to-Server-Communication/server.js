@@ -6,7 +6,7 @@ var express        = require('express'),
     routes         = require('./backend'),
     api            = require('./backend/api');
     webhooks       = require('./backend/webhooks');
-
+    http           = require('http');
 
 var app = module.exports = express();
 
@@ -42,5 +42,13 @@ app.post('/webhooks', webhooks.events);
 
 app.delete('/api/users/:user_id', api.delete_user);
 
-app.listen(8080);
-console.log('Magic happens on port 8080...');
+var server = http.createServer(app).listen(8080);
+
+var io = require('socket.io')(server)
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+});
+
+exports.io = io;
+console.log('server running on port 8080');

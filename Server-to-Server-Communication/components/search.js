@@ -1,7 +1,7 @@
 new Vue({
   el: '#search',
 
-  data: () => {
+  data: function() {
     return {
       errorMessage: '',
       input: '',

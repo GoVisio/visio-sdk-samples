@@ -5,8 +5,14 @@
   <title>Sample Vis.io back-end API usage</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
   <!--<script src="https://sdk.vis.io/v1.0/sdk.min.js"></script>-->
+<<<<<<< HEAD
   <script src="https://sdk.vis.io/v1.1/sdk.min.js"></script>
+=======
+  <script src="https://sdk.dev.vis.io/v1.1/sdk.min.js"></script>
+  <!--<script src="http://localhost:5002/sdk.js"></script>-->
+>>>>>>> local-dev
 </head>
 <body style="padding-top: 70px;overflow-x: hidden;">
 
@@ -39,10 +45,10 @@
               </div>
             </div>
           </br>
-          <h4>Step 2: Copy the API_KEY and SECRET from the app you just created in /backend/helpers.js</h4>
+          <h4>Step 2: Copy the API_KEY and SECRET from the app you just created in config.js</h4>
           <div class="container">
             <div class="col-xs-12" style="padding: 1.5rem;">
-              <img  style="max-width: 62%;" src="/assets/images/backend-helpers.png"></img>
+              <img  style="max-width: 62%;" src="/assets/images/config.png"></img>
             </div>
           </div>
         </br>
@@ -132,10 +138,12 @@
               <button style="margin-bottom: 1rem;" class="btn btn-primary" v-on:click="logUser">Log user in</button>
             </div>
           </div>
+          <!--
           <div class="col-xs-12">
             <iframe id="visio_local" style="width: 710px;
             height: 450px;" src="https://go.vis.io/login"></iframe>
           </div>
+        -->
         </div>
       </div>
 
@@ -171,7 +179,11 @@
         <input type="mail" v-model="targetForCall" class="form-control" placeholder="Contact email for the call" style="margin-bottom: 10px;" >
         <p style="font-weight:500;" v-if="error.targetForCall">{{error.targetForCall}}</p>
         <button class="btn btn-primary" v-on:click="showCallModule()">Show UI call module</button>
-        <div style="height: 500px;display: none;" id="visio-call-module"></div>
+        <div style="height: 500px;display: none;" id="visio-call-module">
+        </div>
+        <button id="stop-call" v-on:click="stopCall()" class="btn btn-danger">
+          Stop call using Visio API
+        </button>
         <h4 class="content-title">Use Visio UI Litecall Module</h4>
         <input type="mail" v-model="targetForLiteCall" class="form-control" placeholder="Contact email for the litecall" style="margin-bottom: 10px;" >
         <p style="font-weight:500;" v-if="error.targetForLiteCall">{{error.targetForLiteCall}}</p>
@@ -211,4 +223,5 @@
 <script src="/components/test.js"></script>
 <script src="/components/chat.js"></script>
 <script src="/components/visio-sdk.js"></script>
+<script src="/components/events.js"></script>
 </html>
